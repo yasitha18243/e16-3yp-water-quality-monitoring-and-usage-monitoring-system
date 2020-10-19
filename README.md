@@ -1,4 +1,4 @@
-# <u>Water Quality Monitoring And Usage Management System</u>
+# Water Quality Monitoring And Usage Management System
 In this project we are developing a water tank monitoring system for providing clean water and reduce the water wastage
 
 Group No :13<br/>
@@ -15,7 +15,7 @@ Water mismanagement and consumption of poluted water is a major challenge, the w
 
 To overcome these issues, we are propossing a device which can be used to measure the water quality of the inlet of a water tank and the water level inside the tank. User can control the device using a mobile application.
 
-1.	Water quality monitoring
+## 1.	Water quality monitoring
 
 * TDS count – by electric conductivity of water
 * Turbidity – by measuring scattering of light in water
@@ -23,7 +23,7 @@ To overcome these issues, we are propossing a device which can be used to measur
 For these 2 measurments, TDS sensors and Turbidity sensors will be used and their readings will be analyzed with ideal water quality levels and determine the water quality of the incoming water to the tank during a filling and notify the user if there is any contamination in the water.
 
 
-2.	Water level monitoring
+## 2.	Water level monitoring
 
 By using an ultrasonic sensor, water level will be monitored and when the tank is nearing to finish filling, user will be notified.
 Also this will generate the usage reports of the water and allow user to observe the current water level in the tank if needed. This measurement also allows to rationing of water and user will be warned in case of overusage.
