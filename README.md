@@ -49,7 +49,7 @@ Also this will generate the usage reports of the water and allow user to observe
 
 ![](images/ar.jpg)
 
-[## Department Of Computer Engineering](http://www.ce.pdn.ac.lk/)
+# [Department Of Computer Engineering](http://www.ce.pdn.ac.lk/)
 
 ![](images/DeptMainLab.jpg)
 
