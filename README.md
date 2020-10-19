@@ -30,7 +30,7 @@ Also this will generate the usage reports of the water and allow user to observe
 
 
 
-
+## [Introductory Video](https://github.com/cepdnaclk/e16-3yp-water-quality-monitoring-and-usage-monitoring-system/blob/main/video/Water%20Quality%20Monitoring%20and%20Usage%20Monitoring%20System.mp4)
 
 
 
