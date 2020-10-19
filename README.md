@@ -4,7 +4,7 @@ In this project we are developing a water tank monitoring system for providing c
 Group No :13<br/>
 E/16/049          Harshana Bandara              e16049@eng.pdn.ac.lk           
 E/16/134          Yasitha Herath                e16134@eng.pdn.ac.lk                 
-E/16/388          Thushara Weerasundara         e16388@eng.pdn.ac.lk)      
+E/16/388          Thushara Weerasundara         e16388@eng.pdn.ac.lk   
 
 # Problem
 
