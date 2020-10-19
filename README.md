@@ -13,7 +13,7 @@ Water mismanagement and consumption of poluted water is a major challenge, the w
 
 # Solution
 
-To overcome these issues, we are propossing a device which can be used to measure the water quality of the inlet of a water tank and the water level inside the tank. User can control the device using a mobile application.
+To overcome these issues, we are propossing a device which can be used to measure the water quality of the inlet of a water tank and the water level inside the tank. We expect to target both domestic user requirments and industrial user requirements by a reasonable price. User can control the device using a mobile application.
 
 ## 1.	Water quality monitoring
 
@@ -28,6 +28,9 @@ For these 2 measurments, TDS sensors and Turbidity sensors will be used and thei
 By using an ultrasonic sensor, water level will be monitored and when the tank is nearing to finish filling, user will be notified.
 Also this will generate the usage reports of the water and allow user to observe the current water level in the tank if needed. This measurement also allows to rationing of water and user will be warned in case of overusage.
 
+# Overview
+
+![](images/project.png)
 
 
 ## [Introductory Video](https://github.com/cepdnaclk/e16-3yp-water-quality-monitoring-and-usage-monitoring-system/blob/main/video/Water%20Quality%20Monitoring%20and%20Usage%20Monitoring%20System.mp4)
