@@ -37,8 +37,8 @@ Also this will generate the usage reports of the water and allow user to observe
 
 # Advising Lecturers
 
-    1. Dr Isuru Nawinna
-    2. Dr Ziyan Marikkar
+   1. Dr. Isuru Navinna
+   2. Dr. Ziyan Marikkar
 
 
 # [University Of Peradeniya](https://www.pdn.ac.lk/uop/directory/index.php)
