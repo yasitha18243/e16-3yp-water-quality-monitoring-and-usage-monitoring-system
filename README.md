@@ -17,8 +17,8 @@ To overcome these issues, we are propossing a device which can be used to measur
 
 1.	Water quality monitoring
 
-*TDS count – by electric conductivity of water
-*Turbidity – by measuring scattering of light in water
+* TDS count – by electric conductivity of water
+* Turbidity – by measuring scattering of light in water
 
 For these 2 measurments, TDS sensors and Turbidity sensors will be used and their readings will be analyzed with ideal water quality levels and determine the water quality of the incoming water to the tank during a filling and notify the user if there is any contamination in the water.
 
