@@ -1,4 +1,4 @@
-# e16-3yp-water-quality-monitoring-and-usage-monitoring-system
+# Water Quality Monitoring And Usage Management System
 In this project we are developing a water tank monitoring system for providing clean water and reduce the water wastage
 
 Group No :13<br/>
