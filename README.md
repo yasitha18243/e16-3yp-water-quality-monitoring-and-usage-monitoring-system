@@ -29,3 +29,9 @@ By using an ultrasonic sensor, water level will be monitored and when the tank i
 Also this will generate the usage reports of the water and allow user to observe the current water level in the tank if needed. This measurement also allows to rationing of water and user will be warned in case of overusage.
 
 
+# Advising Lecturers
+
+    1. Dr Isuru Nawinna
+    2. Dr Ziyan Marikkar
+
+
