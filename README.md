@@ -1,5 +1,5 @@
 # Water Quality Monitoring And Usage Management System
-In this project we are developing a water tank monitoring system for providing clean water and reduce the water wastage
+In this project we are developing a water tank monitoring system for providing clean water and reduce the water wastage..see our website https://cepdnaclk.github.io/e16-3yp-water-quality-monitoring-and-usage-monitoring-system/
 
 Group No :13<br/>
 E/16/049          Harshana Bandara              e16049@eng.pdn.ac.lk           
