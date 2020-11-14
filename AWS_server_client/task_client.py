@@ -1,5 +1,4 @@
-# E/16/388
-# CO 324 lab 4 gRPC
+
 
 from typing import Sequence, Mapping, Tuple
 import random, string, logging, grpc
