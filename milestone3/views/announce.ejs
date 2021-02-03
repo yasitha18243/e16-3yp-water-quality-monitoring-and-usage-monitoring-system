@@ -1,0 +1,73 @@
+<%- include('partials/adminheader'); -%>
+
+<form>
+    Email:<br><br>
+    <input type="text" required id="email"><br><br>
+    Topic:<br><br>
+    <input type="text" required id="topic"><br><br>
+    Message:<br><br>
+    <input type="text" required id="message" size="200"><br>
+    <button type="button" onclick="sendMail()">CONFIRM</button>
+    <br><br>
+    <input type="reset" value="Reset">
+   
+</form>
+<h4 id = 'response'></h4>
+    </body>
+
+    <%- include('partials/footer'); -%>
+
+
+    <script>
+
+        function sendMail()
+        {
+            document.getElementById("response").innerHTML = ""; 
+
+            var data = {};
+            data.email = document.getElementById("email").value;
+            data.topic = document.getElementById("topic").value;
+            data.message = document.getElementById("message").value;
+            
+            var json = JSON.stringify(data);
+            var xhr = new XMLHttpRequest();
+                   
+            var URL = '/notice';
+
+            xhr.open("POST", URL, true);
+   	
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+
+            xhr.onload = function()
+                {
+                    if(this.status == 200)
+                        {
+                            document.getElementById("response").innerHTML = "Notice Sent!"; 
+                        }
+                    else if(this.status == 404)
+                        {
+                            document.getElementById("response").innerHTML = "No User Under The Given Email!"; 
+                        }  
+                    else if(this.status == 400)
+                        {
+                            document.getElementById("response").innerHTML = "No Message Found!"; 
+                        }
+                    else if(this.status == 401)
+                        {
+                            document.getElementById("response").innerHTML = "No Topic Found!"; 
+                        }    
+                        else
+                        {	
+                            document.getElementById("error").innerHTML = "Failed to Deliver Notice!"; 
+                        }
+                }
+
+                xhr.send(json);
+
+
+        }
+
+
+
+
+    </script>

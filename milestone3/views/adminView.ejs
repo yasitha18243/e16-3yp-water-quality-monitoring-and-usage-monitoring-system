@@ -1,0 +1,365 @@
+<%- include('partials/adminheader'); -%>
+
+<header2>
+<div class="image">
+    <img src="/tank.png" alt="">
+  </div>
+  	<h1>System Details</h1>
+  
+</header2>  
+
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+	
+  	
+  	 <button onclick="loadData()">System Report</button>
+     <br> <br>
+     <div id="table"></div>
+
+
+	<br>
+    
+    <div class="row">
+      <div class="column">
+          	
+
+<button class="open-button" onclick="openUpdateForm()">Update a User</button>
+<br>
+
+<div class="form-popup" id="myUpdateForm" hidden>
+  <form>
+    
+
+    <label for="email"><b>Email of User</b></label>
+
+     <input type="text"  id="email" placeholder="Enter Email To Update" required="" />
+   	 <div class="email error" id = 'emailerror'></div>
+
+     <label for="firstname">First Name</label>
+	  <input type="text" id="firstname" placeholder="Enter First Name To Update" required maxlength="20" pattern="^[A-Z][a-z]*[a-z]$" />
+	  <div class="email error" id = 'firstnameerror'></div>
+
+
+	  <label for="lastname">Last Name</label>
+	  <input type="text" id="lastname" placeholder="Enter Last Name To Update" required maxlength="20" pattern="^[A-Z][a-z]*[a-z]$" />
+	  <div class="email error" id = 'lastnameerror'></div>
+
+
+	  <label for="contact">Contact NO</label>
+	  <input type="contact" id="contact" placeholder="Enter Contact No. To Update" required pattern="[0-9]{10}" />
+	  <div class="email error" id = 'contacterror'></div>
+
+	  <label for="address">Address</label>
+	  <input type="address" id="address" placeholder="Enter Address To Update" required minlength="1" maxlength="100"/>
+	  <div class="email error" id = 'addresserror'></div>
+
+
+    <button type="button" onclick="UpdateUser()">UPDATE</button>
+
+
+
+    <button type="button" class="btn cancel" onclick="closeUpdateForm()">Close</button>
+  </form>
+</div>
+
+<h3 id = "updateresults"></h3>
+      </div>      
+      <div class="column" >
+       
+        
+<button class="open-button" onclick="openDeleteForm()">Delete a User</button>
+<br>
+
+<div class="form-popup" id="myForm" hidden>
+  <form>
+    
+    <label for="email"><b>Email</b></label>
+
+     <input type="text" id = "entry" name="email" placeholder="Enter Email To Delete" required="" />
+     <div class="email error" id = 'error'></div>
+
+    <button type="button" onclick="deleteUser()">CONFIRM</button>
+
+    <button type="button" class="btn cancel" onclick="closeDeleteForm()">Close</button>
+  </form>
+</div>
+<br>
+<h3 id = "results"></h3>
+      </div>
+    </div>
+
+
+  	
+  </div>
+</div> 
+    
+
+<%- include('partials/footer'); -%>
+
+
+<script>
+
+
+
+
+function UpdateUser()
+{
+	console.log("update")
+
+	var data = {};
+	data.email = document.getElementById("email").value;
+	data.firstname = document.getElementById("firstname").value;
+	data.lastname = document.getElementById("lastname").value;
+	data.contact = document.getElementById("contact").value;
+	data.address = document.getElementById("address").value;
+
+	document.getElementById("updateresults").innerHTML = ""; 
+	document.getElementById("emailerror").innerHTML = ""; 
+	document.getElementById("firstnameerror").innerHTML = ""; 
+	document.getElementById("lastnameerror").innerHTML = ""; 
+	document.getElementById("contacterror").innerHTML = ""; 
+	document.getElementById("addresserror").innerHTML = ""; 
+	
+	var json = JSON.stringify(data)
+
+
+	var xhr = new XMLHttpRequest();
+   	
+   	var URL = '/update';
+
+   	xhr.open("PUT", URL, true);
+
+   	xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+
+   	xhr.onload = function()
+   {
+        if(this.status == 200)
+        {
+        	document.getElementById("updateresults").innerHTML = "User Updated!"; 
+        }
+        else if(this.status == 406)
+        {	
+        	document.getElementById("updateresults").innerHTML = "Theese are The Existing Values!"; 
+        }
+        else if(this.status == 404)
+        {	
+        	document.getElementById("updateresults").innerHTML = "There are No Exsiting Customer Under this Email!"; 
+        }
+        else
+        {	
+        	var err = JSON.parse(this.responseText);
+
+
+
+        	document.getElementById("emailerror").innerHTML = err.error.email; 
+		    document.getElementById("firstnameerror").innerHTML = err.error.firstname; 
+		    document.getElementById("lastnameerror").innerHTML = err.error.lastname; 
+		    document.getElementById("contacterror").innerHTML = err.error.contact; 
+		    document.getElementById("addresserror").innerHTML = err.error.address; 
+        }
+
+
+	}
+
+	xhr.send(json);
+
+
+	console.log(json)
+
+}
+
+
+
+
+
+function openUpdateForm() 
+{
+  document.getElementById("updateresults").innerHTML = ""; 
+  document.getElementById("emailerror").innerHTML = ""; 
+  document.getElementById("firstnameerror").innerHTML = ""; 
+  document.getElementById("lastnameerror").innerHTML = ""; 
+  document.getElementById("contacterror").innerHTML = ""; 
+  document.getElementById("addresserror").innerHTML = ""; 
+  document.getElementById("myUpdateForm").style.display = "block";
+}
+
+function closeUpdateForm() 
+{ 
+  document.getElementById("updateresults").innerHTML = ""; 
+  document.getElementById("emailerror").innerHTML = ""; 
+  document.getElementById("firstnameerror").innerHTML = ""; 
+  document.getElementById("lastnameerror").innerHTML = ""; 
+  document.getElementById("contacterror").innerHTML = ""; 
+  document.getElementById("addresserror").innerHTML = ""; 
+  document.getElementById("myUpdateForm").style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function deleteUser()
+{	
+	document.getElementById("error").innerHTML = ""; 
+	document.getElementById("results").innerHTML = ""; 
+
+	var inputVal = document.getElementById("entry").value;
+	
+	var xhr = new XMLHttpRequest();
+   	
+   	var URL = '/remove/'+ inputVal
+
+   	
+  	xhr.open('DELETE', URL, true);
+
+  	xhr.onload = function()
+   {
+        if(this.status == 200)
+        {
+        	document.getElementById("results").innerHTML = "User Removed!"; 
+        }
+        else
+        {	
+        	document.getElementById("error").innerHTML = "This User Under This Email Does Not Exist!"; 
+        }
+
+
+	}
+
+	xhr.send();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function openDeleteForm() 
+{
+  document.getElementById("error").innerHTML = ""; 
+  document.getElementById("results").innerHTML = ""; 
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeDeleteForm() 
+{ 
+  document.getElementById("error").innerHTML = ""; 
+  document.getElementById("results").innerHTML = ""; 
+  document.getElementById("myForm").style.display = "none";
+}
+
+function loadData() 
+{
+  
+   var xhr = new XMLHttpRequest();
+   
+
+   xhr.open('GET', '/report', true);
+
+   xhr.onload = function()
+   {
+        if(this.status == 200)
+        {
+          var user = JSON.parse(this.responseText);
+          
+          console.log(user);
+
+          var table = new Tabulator("#table", {
+		    data:user.details,           //load row data from array
+		    layout:"fitColumns",      //fit columns to width of table
+		    rowFormatter:function(row){
+		        if(row.getData().tds > 200 || row.getData().turbidity > 5)
+		        {
+		            row.getElement().style.backgroundColor = "salmon";
+		           
+		        }
+		        
+		    },
+		    responsiveLayout:"hide",  //hide columns that dont fit on the table
+		    tooltips:true,            //show tool tips on cells
+		    addRowPos:"top",          //when adding a new row, add it to the top of the table
+		    history:true,             //allow undo and redo actions on the table
+		    pagination:"local",       //paginate the data
+		    paginationSize:7,         //allow 7 rows per page of data
+		    movableColumns:true,      //allow column order to be changed
+		    resizableRows:true,       //allow row order to be changed
+		    initialSort:[             //set the initial sort order of the data
+		        {column:"area", dir:"asc"},
+		    ],
+			columns:[                 //define the table columns
+				{title:"Area", field:"area", hozAlign:"left", editor:false, align : "left"},
+		    	{title:"Owner", field:"email", hozAlign:"left", editor:false, align : "left"},
+		        {title:"Tank", field:"no", hozAlign:"left", editor:false},
+		        {title:"TDS Count", field:"tds", hozAlign:"left", editor:false, formatter:function(cell, formatterParams)
+		        	{
+				       var value = cell.getValue();
+				        if(value > 200)
+				        {
+				            return "<span style='color:red; font-weight:bold;'>" + value + "</span>";
+				        }
+				        else
+				        {
+				            return "<span style='color:green; font-weight:bold;'>" + value + "</span>";
+				        }
+				    }},
+
+		        {title:"Turbidity", field:"turbidity",hozAlign:"left", editor:false, formatter:function(cell, formatterParams)
+		        	{
+				       var value = cell.getValue();
+				        if(value > 5)
+				        {
+				            return "<span style='color:red; font-weight:bold;'>" + value + "</span>";
+				        }
+				        else
+				        {
+				             return "<span style='color:green; font-weight:bold;'>" + value + "</span>";
+				        }
+				    }},
+
+
+		        {title:"Report Date", field:"updated_at", sorter:"date", hozAlign:"left"},
+		     
+		        
+		    ]
+});
+      
+        }
+
+        if(this.status == 429)
+        {
+          document.getElementById("table").innerHTML = "Too many requests from this IP, please try again after an hour!"; 
+        }
+      }
+
+      xhr.send();
+
+}
+
+
+
+
+
+
+
+</script>

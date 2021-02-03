@@ -1,0 +1,153 @@
+<%- include('partials/adminheader'); -%>
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+  
+<h2>Search For Infromation</h2>
+
+<div class="row">
+  <div class="column" style="background-color:rgb(75, 175, 241);">
+ 
+      <p>Search By User Name:</p>
+      <br>
+  	 <input type="text" placeholder="Search.." name="search" id = "name">
+        <button onclick="byName()">Search</i></button>
+    <br><br>
+    <h4 id = 'err1'></h4>
+    <div id="table1"></div>
+
+  </div>
+  <div class="column" style="background-color:rgb(65, 160, 238);">
+   <p>Search By Area:</p>
+   <br>
+    <input type="text" placeholder="Search.." name="search" id = "area">
+        <button onclick="byArea()">Search</i></button>
+    <br><br>
+    <div id="table2"></div>
+    <h4 id = 'err2'></h4>
+
+  </div>
+</div>
+
+
+</body>
+
+
+
+
+<%- include('partials/footer'); -%>
+
+
+<script>
+
+function byName()
+{   
+    document.getElementById("err1").innerHTML = ""; 
+    const name = document.getElementById("name").value;
+    var xhr = new XMLHttpRequest();
+    var URL = '/name/'+ name;
+    xhr.open('GET', URL , true);
+
+    xhr.onload = function()
+   {
+        if(this.status == 200)
+        {   
+            var user = JSON.parse(this.responseText);
+
+            console.log(user)
+            var tabledata = user.results;
+
+            var table = new Tabulator("#table1", {
+    data:tabledata,           //load row data from array
+    layout:"fitColumns",      //fit columns to width of table
+    responsiveLayout:"hide",  //hide columns that dont fit on the table
+    tooltips:true,            //show tool tips on cells
+    addRowPos:"top",          //when adding a new row, add it to the top of the table
+    history:true,             //allow undo and redo actions on the table
+    pagination:"local",       //paginate the data
+    paginationSize:7,         //allow 7 rows per page of data
+    movableColumns:true,      //allow column order to be changed
+    resizableRows:true,       //allow row order to be changed
+    initialSort:[             //set the initial sort order of the data
+        {column:"name", dir:"asc"},
+    ],
+    columns:[                 //define the table columns
+        {title:"First Name", field:"firstname"},
+        {title:"Last Name", field:"lastname"},
+        {title:"Contact No.", field:"contact"},
+        {title:"Address", field:"address"},
+    ],
+});
+
+        }
+        else
+        {	
+            
+        	document.getElementById("error").innerHTML = "This User Under This Email Does Not Exist!"; 
+        }
+
+
+	}
+        xhr.send();
+}
+
+
+
+function byArea()
+{   
+    document.getElementById("err2").innerHTML = ""; 
+    const area = document.getElementById("area").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/report', true);
+
+    var URL = '/area/'+ area;
+    xhr.open('GET', URL , true);
+
+    xhr.onload = function()
+   {
+        if(this.status == 200)
+        {   
+            var user = JSON.parse(this.responseText);
+            var tabledata = user.results;
+
+            var table = new Tabulator("#table2", {
+    data:tabledata,           //load row data from array
+    layout:"fitColumns",      //fit columns to width of table
+    responsiveLayout:"hide",  //hide columns that dont fit on the table
+    tooltips:true,            //show tool tips on cells
+    addRowPos:"top",          //when adding a new row, add it to the top of the table
+    history:true,             //allow undo and redo actions on the table
+    pagination:"local",       //paginate the data
+    paginationSize:7,         //allow 7 rows per page of data
+    movableColumns:true,      //allow column order to be changed
+    resizableRows:true,       //allow row order to be changed
+    initialSort:[             //set the initial sort order of the data
+        {column:"name", dir:"asc"},
+    ],
+    columns:[                 //define the table columns
+        {title:"First Name", field:"firstname"},
+        {title:"Last Name", field:"lastname"},
+        {title:"Contact No.", field:"contact"},
+        {title:"Address", field:"address"},
+    ],
+});
+
+           console.log(user)
+ 
+        }
+        else
+        {	
+           document.getElementById("error").innerHTML = "This User Under This Email Does Not Exist!"; 
+        }
+
+
+	}
+        xhr.send();
+
+}
+
+
+
+
+
+
+</script>
