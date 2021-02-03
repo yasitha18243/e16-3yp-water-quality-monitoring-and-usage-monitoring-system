@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+ 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/adminStyles.css">
+  <link rel="stylesheet2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+</head>
+<body>
+  <nav>
+    <h1><a href="/superView">Water Quality and Usage Monitor</a></h1>
+    <ul>
+      <% if (user) { %>
+        <li>Welcome, <%= user.email %></li>
+        <li><a href="/logout">Log out</a></li>
+      <% } else { %>
+        <li><a href="/login">Log in</a></li>
+        <li><a href="/signup" class="btn">Sign up</a></li>
+      <% } %>
+    </ul>
+  </nav>
+  <div class="sidebar">
+    <a href="/superView"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="/announce"><i class="fa fa-fw fa-wrench"></i> Notice</a>
+    <a href="/customers"><i class="fa fa-fw fa-user"></i> Clients</a>
+    <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+    </div>
+  
