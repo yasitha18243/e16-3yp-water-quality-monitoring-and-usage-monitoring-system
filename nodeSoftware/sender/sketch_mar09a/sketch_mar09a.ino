@@ -1,5 +1,5 @@
 
-#include <ArduinoJson.h>
+#include <ArduinoJson.h>  
 
 int limit = 0;
 
@@ -26,11 +26,11 @@ int getTURB(int pin);
 int getLevel(int pin);
 
 
-void setup() 
+void setup()   
 {
   Serial.begin(9600);
   HEIGHT = getLevel(LEVELpin);
-  limit = getTDS(TDSPin);
+  limit = getTDS(TDSPin);    
   attachInterrupt(USAGEPin, addL, RISING);
   pinMode(speaker, OUTPUT);
 }
@@ -81,15 +81,7 @@ void loop()
   String data =  tds + TDS + turbidity + TURBIDITY + level + LEVEL + last;
   
  
-  
-  if(check > limit)
-  {
-    Serial.println(data);
-  }
-  else
-  {
-    warn();
-  }
+  Serial.println(data);
 
    
    delay(6000);
