@@ -9,16 +9,16 @@
             "linkedin_profile":"#"
         },
         {
-            "name": "Team Member Name 2",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx",
-            "github_profile":"#",
-            "linkedin_profile":"#"
+            "name": "Bandara S.D.M.V.G.H.N.",
+            "email": "e16049@eng.pdn.ac.lk",
+            "eNumber": "E/16/049",
+            "github_profile":"https://github.com/harshanabandara",
+            "linkedin_profile":"https://www.linkedin.com/in/harshana-bandara-02a4601b3/"
         },
         {
             "name": "Team Member Name 3",
             "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx",
+            "eNumber": "E/16/134",
             "github_profile":"#",
             "linkedin_profile":"#"
         }
@@ -26,7 +26,7 @@
     "supervisors": [
         {
             "name": "Dr. Isuru Navinne",
-            "email": "email@eng.pdn.ac.lk",
+            "email": "isurunawinne@eng.pdn.ac.lk",
             "linkedin_profile":"#",
             "researchgate_profile":"#"
         },
