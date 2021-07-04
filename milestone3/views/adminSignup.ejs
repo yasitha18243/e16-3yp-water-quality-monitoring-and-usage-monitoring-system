@@ -1,0 +1,79 @@
+<%- include('partials/header'); -%>
+
+<form action="/signup">
+  <h2>Sign Up Administors!</h2>
+  <label for="email">Email</label>
+  <input type="text" name="email" placeholder="Enter Email of New User" required />
+  <div class="email error"></div>
+  <label for="password">Password</label>
+  <input type="password" name="password" placeholder="Enter Password of New User" required />
+  <div class="password error"></div>
+
+  <label for="roles">Admin Role:</label>
+  <select name="roles" id="roles">
+  <option value="super">Super Admin</option>
+  <option value="admin">Admin</option>
+  
+ 
+
+  </select>
+  <br><br>
+
+  <button>Sign up</button>
+</form>
+
+<%- include('partials/footer'); -%>
+
+<script>
+  const form = document.querySelector('form');
+  const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // reset errors
+    emailError.textContent = '';
+    passwordError.textContent = '';
+
+    // get values
+    const email = form.email.value;
+    const password = form.password.value;
+    const role = document.getElementById("roles").value;
+
+    try 
+    {
+      const res = await fetch('/signup', { 
+        method: 'POST', 
+        body: JSON.stringify({ email, password, role }),
+        headers: {'Content-Type': 'application/json'}
+      });
+
+      console.log(res.status);
+
+      if(res.status == 429)
+      {
+        location.assign('/tooManyRequests');
+      }
+
+      const data = await res.json();
+      console.log(data);
+
+      if (data.errors) 
+      {
+        emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password;
+      }
+      if (data.user) 
+      {
+        location.assign('/confirm');
+      }
+
+    }
+    catch (err) 
+    {
+      console.log(err);
+    }
+
+  });
+</script>

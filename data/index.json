@@ -1,0 +1,41 @@
+{
+    "title": "This is the title of the project",
+    "team": [
+        {
+            "name": "Weerasundara W.M.T.M.P.B.",
+            "email": "e16388@eng.pdn.ac.lk",
+            "eNumber": "E/16/388",
+            "github_profile":"https://github.com/ThusharaWeerasundara",
+            "linkedin_profile":"#"
+        },
+        {
+            "name": "Bandara S.D.M.V.G.H.N.",
+            "email": "e16049@eng.pdn.ac.lk",
+            "eNumber": "E/16/049",
+            "github_profile":"https://github.com/harshanabandara",
+            "linkedin_profile":"https://www.linkedin.com/in/harshana-bandara-02a4601b3/"
+        },
+        {
+            "name": "Herath H.M.Y.B",
+            "email": "e16134@eng.pdn.ac.lk",
+            "eNumber": "E/16/134",
+            "github_profile":"https://github.com/yasitha18243",
+            "linkedin_profile":"#"
+        }
+    ],
+    "supervisors": [
+        {
+            "name": "Dr. Isuru Navinne",
+            "email": "isurunawinne@eng.pdn.ac.lk",
+            "linkedin_profile":"#",
+            "researchgate_profile":"#"
+        },
+        {
+            "name": "Dr. Ziyam Marikkar",
+            "email": "email@eng.pdn.ac.lk",
+            "linkedin_profile":"#",
+            "researchgate_profile":"#"
+        }
+    ],
+    "tags": ["Web", "Embedded Systems", "IoT","Mobile Application"]
+}

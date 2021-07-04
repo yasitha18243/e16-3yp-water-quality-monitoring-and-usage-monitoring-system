@@ -1,0 +1,17 @@
+sadmin
+confirm
+superView
+signup
+adminSignup
+login
+logout
+restricted
+userReg
+confirmation
+tanks
+report
+statistics
+remove
+removeAdmin
+update
+tooManyRequests

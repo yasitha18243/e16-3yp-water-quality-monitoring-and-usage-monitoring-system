@@ -1,0 +1,90 @@
+<%- include('partials/Sadminheader'); -%>
+
+<header>
+  
+  <div class="image">
+    <img src="/tank.png" alt="">
+  </div>
+  <div class="headings">
+    <h1>Super Admin </h1>
+      <a href="/adminSignup" class="btn">Register an Administrative User</a>
+      <button class="open-button" onclick="openDeleteForm()">Delete a User</button>
+  </div>
+</header>
+
+
+
+
+
+<br>
+
+<div class="form-popup" id="myForm" hidden>
+  <form>
+    
+    <label for="email"><b>Email</b></label>
+
+     <input type="text" id = "entry" name="email" placeholder="Enter Email To Delete" required="" />
+     <div class="email error" id = 'error'></div>
+
+    <button type="button" onclick="deleteAdmin()">CONFIRM</button>
+
+    <button type="button" class="btn cancel" onclick="closeDeleteForm()">Close</button>
+  </form>
+</div>
+<br>
+<h3 id = "results"></h3>
+
+
+<%- include('partials/footer'); -%>
+
+
+<script>
+	
+function openDeleteForm() 
+{
+  document.getElementById("error").innerHTML = ""; 
+  document.getElementById("results").innerHTML = ""; 
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeDeleteForm() 
+{ 
+  document.getElementById("error").innerHTML = ""; 
+  document.getElementById("results").innerHTML = ""; 
+  document.getElementById("myForm").style.display = "none";
+}
+
+
+
+function deleteAdmin()
+{	
+	document.getElementById("error").innerHTML = ""; 
+	document.getElementById("results").innerHTML = ""; 
+
+	var inputVal = document.getElementById("entry").value;
+	
+	var xhr = new XMLHttpRequest();
+   	
+   	var URL = '/removeAdmin/'+ inputVal
+
+   	
+  	xhr.open('DELETE', URL, true);
+
+  	xhr.onload = function()
+   {
+        if(this.status == 200)
+        {
+        	document.getElementById("results").innerHTML = "Admin Removed!"; 
+        }
+        else
+        {	
+        	document.getElementById("error").innerHTML = "This Admin Under This Email Does Not Exist!"; 
+        }
+
+
+	}
+
+	xhr.send();
+}
+
+</script>
